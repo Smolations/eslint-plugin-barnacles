@@ -1,0 +1,32 @@
+{
+  "name": "eslint-plugin-barnacles",
+  "version": "0.0.1",
+  "description": "a short description of this plugin",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "Smolations",
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "mocha tests --recursive"
+  },
+  "dependencies": {
+    "requireindex": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-plugin-eslint-plugin": "^3.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^9.1.3"
+  },
+  "engines": {
+    "node": "12.x || 14.x || >= 16"
+  },
+  "peerDependencies": {
+    "eslint": ">=7"
+  },
+  "license": "MIT"
+}
