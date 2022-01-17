@@ -4,12 +4,8 @@ module.exports = {
     parserOptions: {
       ecmaVersion: 6,
     },
-  }
+  },
   rules: {
-    // "dollar-sign": {
-    //   create: function (context) {
-    //     // rule implementation ...
-    //   }
-    // }
-  }
+    'object-curly-newline': require('./lib/rules/object-curly-newline'),
+  },
 };

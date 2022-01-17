@@ -18,6 +18,8 @@ const addDefaultOptions = require('../add-default-options');
 
 const ruleTester = new RuleTester();
 
+// cover nested object test case?
+
 // most test cases using default minProperties of 3
 ruleTester.run('object-curly-newline', rule, {
   valid: [
@@ -42,15 +44,39 @@ ruleTester.run('object-curly-newline', rule, {
         } = foo;
       `,
     },
-    // {
-    //   code: `
-    //     function foo({
-    //       one,
-    //       two,
-    //       three
-    //     }) = foo;
-    //   `,
-    // },
+    {
+      code: 'function foo({ one, two }) {};',
+    },
+    {
+      code: 'function foo(standalone, { one, two }) {};',
+    },
+    {
+      code: `
+        function foo({
+          one,
+          two,
+          three: threeRename
+        }) {};
+      `,
+    },
+    {
+      code: `
+        function foo(standalone, {
+          one,
+          two,
+          three: threeRename
+        }) {};
+      `,
+    },
+    {
+      code: `
+        const foo = (standalone, {
+          one,
+          two,
+          three: threeRename
+        }) => {};
+      `,
+    },
   ].map(addDefaultOptions),
 
   invalid: [
@@ -61,7 +87,7 @@ ruleTester.run('object-curly-newline', rule, {
     },
     {
       code: 'const { one, two, three } = foo;',
-      errors: [{ messageId: 'requireMultilineDestructure' }],
+      errors: [{ messageId: 'requireMultiline' }],
     },
     {
       code: `
@@ -77,11 +103,15 @@ ruleTester.run('object-curly-newline', rule, {
           one, two, three
         } = foo;
       `,
-      errors: [{ messageId: 'requireMultilineDestructure' }],
+      errors: [{ messageId: 'requireMultiline' }],
     },
-    // {
-    //   code: `function ({ one, two, three }) {}`,
-    //   errors: [{ messageId: 'requireMultiline' }],
-    // },
+    {
+      code: 'function foo({ one, two, three: threeRename }) {}',
+      errors: [{ messageId: 'requireMultiline' }],
+    },
+    {
+      code: 'const foo = ({ one, two, three: threeRename }) => {}',
+      errors: [{ messageId: 'requireMultiline' }],
+    },
   ].map(addDefaultOptions),
 });
