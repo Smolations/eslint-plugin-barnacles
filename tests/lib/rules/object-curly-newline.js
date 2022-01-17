@@ -35,11 +35,11 @@ ruleTester.run('object-curly-newline', rule, {
     },
     {
       code: `
-      const {
-        one,
-        two,
-        three
-      } = foo;
+        const {
+          one,
+          two,
+          three
+        } = foo;
       `,
     },
     // {
@@ -63,20 +63,16 @@ ruleTester.run('object-curly-newline', rule, {
       code: 'const { one, two, three } = foo;',
       errors: [{ messageId: 'requireMultilineDestructure' }],
     },
-    // {
-    //   code: `function ({ one, two, three }) {}`,
-    //   errors: [{ messageId: 'requireMultiline' }],
-    // },
-    // {
-    //   code: `
-    //     const foo = {
-    //       one: 1, two: 2, three: 3
-    //     };
-    //   `,
-    //   errors: [{
-    //     messageId: 'Properties must be on new line',
-    //   }],
-    // },
+    {
+      code: `
+        const foo = {
+          one: 1, two: 2, three: 3
+        };
+      `,
+      errors: [{
+        messageId: 'requireMultilineInit',
+      }],
+    },
     // {
     //   code: `
     //     const {
@@ -86,6 +82,10 @@ ruleTester.run('object-curly-newline', rule, {
     //   errors: [{
     //     messageId: 'Properties must be on new line',
     //   }],
+    // },
+    // {
+    //   code: `function ({ one, two, three }) {}`,
+    //   errors: [{ messageId: 'requireMultiline' }],
     // },
   ].map(addDefaultOptions),
 });
