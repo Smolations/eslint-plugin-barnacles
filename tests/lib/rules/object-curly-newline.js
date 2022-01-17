@@ -69,20 +69,16 @@ ruleTester.run('object-curly-newline', rule, {
           one: 1, two: 2, three: 3
         };
       `,
-      errors: [{
-        messageId: 'requireMultilineInit',
-      }],
+      errors: [{ messageId: 'requireMultilineInit' }],
     },
-    // {
-    //   code: `
-    //     const {
-    //       one, two, three
-    //     } = foo;
-    //   `,
-    //   errors: [{
-    //     messageId: 'Properties must be on new line',
-    //   }],
-    // },
+    {
+      code: `
+        const {
+          one, two, three
+        } = foo;
+      `,
+      errors: [{ messageId: 'requireMultilineDestructure' }],
+    },
     // {
     //   code: `function ({ one, two, three }) {}`,
     //   errors: [{ messageId: 'requireMultiline' }],
