@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 const rule = require('../../../lib/rules/object-curly-newline');
 const RuleTester = require('../rule-tester');
+const addDefaultOptions = require('../add-default-options');
 
 
 //------------------------------------------------------------------------------
@@ -16,9 +17,13 @@ const RuleTester = require('../rule-tester');
 //------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester();
+
+// most test cases using default minProperties of 3
 ruleTester.run('object-curly-newline', rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      code: 'const foo = { one: 1, two: 2 };',
+    },
     {
       code: `
         const foo = {
@@ -30,11 +35,11 @@ ruleTester.run('object-curly-newline', rule, {
     },
     {
       code: `
-        const {
-          one,
-          two,
-          three
-        } = foo;
+      const {
+        one,
+        two,
+        three
+      } = foo;
       `,
     },
     // {
@@ -46,7 +51,7 @@ ruleTester.run('object-curly-newline', rule, {
     //     }) = foo;
     //   `,
     // },
-  ],
+  ].map(addDefaultOptions),
 
   invalid: [
     {
@@ -82,5 +87,5 @@ ruleTester.run('object-curly-newline', rule, {
     //     messageId: 'Properties must be on new line',
     //   }],
     // },
-  ],
+  ].map(addDefaultOptions),
 });
