@@ -12,7 +12,8 @@
   "scripts": {
     "lint": "eslint .",
     "old-test": "mocha tests --recursive",
-    "test": "jest tests"
+    "test": "jest tests",
+    "test:watch": "jest --watch tests"
   },
   "dependencies": {
     "requireindex": "^1.2.0"

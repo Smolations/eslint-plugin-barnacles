@@ -27,10 +27,26 @@ ruleTester.run('object-curly-newline', rule, {
           three: 3
         };
       `,
-    }
+    },
+    {
+      code: `
+        const {
+          one,
+          two,
+          three
+        } = foo;
+      `,
+    },
   ],
 
   invalid: [
+    {
+      code: `const foo = { one: 1, two: 2, three: 3 };`,
+      errors: [{
+        messageId: 'requireMultiline',
+        // type: 'object-curly-newline-type-err1',
+      }],
+    },
     {
       code: `
         const foo = {
@@ -39,7 +55,18 @@ ruleTester.run('object-curly-newline', rule, {
       `,
       errors: [{
         message: 'Properties must be on new line',
-        type: 'object-curly-newline-type',
+        type: 'object-curly-newline-type-err2',
+      }],
+    },
+    {
+      code: `
+        const {
+          one, two, three
+        } = foo;
+      `,
+      errors: [{
+        message: 'Properties must be on new line',
+        type: 'object-curly-newline-type-err3',
       }],
     },
   ],
