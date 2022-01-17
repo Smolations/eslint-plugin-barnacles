@@ -1,6 +1,8 @@
 # eslint-plugin-barnacles
 
-a short description of this plugin
+An opinionated set of rules aimed at enterprise-level projects. These types of projects often have many, many files so reading and grokking code becomes an exercise of time. Most of these rules are aimed at just that: saving microseconds at a time. Your future selves will thank me.
+
+**UNDER CONSTRUCTION**
 
 ## Installation
 
@@ -42,5 +44,3 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * Fill in provided rules here
-
-

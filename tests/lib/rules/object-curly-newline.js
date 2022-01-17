@@ -7,9 +7,8 @@
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
-
-const rule = require('../../../lib/rules/object-curly-newline'),
-  RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/object-curly-newline');
+const RuleTester = require('../rule-tester');
 
 
 //------------------------------------------------------------------------------
