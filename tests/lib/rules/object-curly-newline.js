@@ -37,37 +37,50 @@ ruleTester.run('object-curly-newline', rule, {
         } = foo;
       `,
     },
+    // {
+    //   code: `
+    //     function foo({
+    //       one,
+    //       two,
+    //       three
+    //     }) = foo;
+    //   `,
+    // },
   ],
 
   invalid: [
     {
       code: `const foo = { one: 1, two: 2, three: 3 };`,
-      errors: [{
-        messageId: 'requireMultiline',
-        // type: 'object-curly-newline-type-err1',
-      }],
+      errors: [{ messageId: 'requireMultiline' }],
+      // type: '...', // references node type
     },
     {
-      code: `
-        const foo = {
-          one: 1, two: 2, three: 3
-        };
-      `,
-      errors: [{
-        message: 'Properties must be on new line',
-        type: 'object-curly-newline-type-err2',
-      }],
+      code: `const { one, two, three } = foo;`,
+      errors: [{ messageId: 'requireMultiline' }],
     },
-    {
-      code: `
-        const {
-          one, two, three
-        } = foo;
-      `,
-      errors: [{
-        message: 'Properties must be on new line',
-        type: 'object-curly-newline-type-err3',
-      }],
-    },
+    // {
+    //   code: `function ({ one, two, three }) {}`,
+    //   errors: [{ messageId: 'requireMultiline' }],
+    // },
+    // {
+    //   code: `
+    //     const foo = {
+    //       one: 1, two: 2, three: 3
+    //     };
+    //   `,
+    //   errors: [{
+    //     messageId: 'Properties must be on new line',
+    //   }],
+    // },
+    // {
+    //   code: `
+    //     const {
+    //       one, two, three
+    //     } = foo;
+    //   `,
+    //   errors: [{
+    //     messageId: 'Properties must be on new line',
+    //   }],
+    // },
   ],
 });
